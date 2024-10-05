@@ -1,5 +1,8 @@
 # Docs
 
+This is a simple weather monitoring app written in typescript (Nextjs and Express).
+It can get current weather of a city (Input field available in tha page) and history of two dates (no time to implement other features) "2024-09-01" & "2024-09-02"
+
 ## Tech Stacks Used
 
 1. Next.js for frontend
