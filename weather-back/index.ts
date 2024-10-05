@@ -3,6 +3,7 @@ const NodeCache = require( "node-cache" );
 
 const app = express();
 const port = 3001;
+const cache = new NodeCache();
 
 app.get("/", (req: any, res: any) => {
   res.send("Express is running!");
@@ -63,8 +64,19 @@ app.get("/api/history", async (req: any, res: any) => {
 });
 
 app.get("/api/data", (req: any, res: any) => {
-  res.send({
-    temperature: 10,
+    const { location, temperature } = req.query;
+    console.log(location, temperature);
+
+    cache.set(location, temperature);
+
+    const value = cache.get(location);
+    console.log(value);
+    
+  res.json({
+    response: "ok",
+    ok: true,
+    location: location,
+    temperature: temperature,
   });
 });
 
